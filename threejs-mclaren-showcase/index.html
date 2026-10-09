@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>McLaren 3D Showcase & Customizer</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      overflow: hidden;
+      background-color: #0b0d12;
+      color: #ffffff;
+    }
+    #canvas-container {
+      width: 100vw;
+      height: 100vh;
+    }
+    /* UI Overlay Control */
+    .ui-overlay {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 10;
+      background: rgba(15, 20, 30, 0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 20px;
+      border-radius: 16px;
+      max-width: 300px;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+    }
+    h1 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #ff6600;
+      margin-bottom: 4px;
+    }
+    p.subtitle {
+      font-size: 0.8rem;
+      color: #aaaaaa;
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 12px 0 8px;
+      color: #dddddd;
+    }
+    .color-picker {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .color-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .color-btn:hover {
+      transform: scale(1.15);
+      border-color: #ffffff;
+    }
+    .btn-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    button.action-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      padding: 8px 10px;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    button.action-btn:hover {
+      background: #ff6600;
+      border-color: #ff6600;
+      color: #000;
+      font-weight: bold;
+    }
+    #loading {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.2rem;
+      color: #ff6600;
+      font-weight: bold;
+      pointer-events: none;
+      transition: opacity 0.5s;
+    }
+  </style>
+</head>
+<body>
+  <div id="loading">Memuat Model McLaren 3D...</div>
+  <div id="canvas-container"></div>
+
+  <div class="ui-overlay">
+    <h1>McLAREN 3D</h1>
+    <p class="subtitle">Showcase & Configurator Interaktif</p>
+
+    <div class="section-title">Warna Cat Bodi</div>
+    <div class="color-picker">
+      <div class="color-btn" style="background: #ff6600;" data-color="0xff6600" title="Papaya Orange"></div>
+      <div class="color-btn" style="background: #111111;" data-color="0x111111" title="Onyx Black"></div>
+      <div class="color-btn" style="background: #e6e6e6;" data-color="0xe6e6e6" title="Silica White"></div>
+      <div class="color-btn" style="background: #cc0000;" data-color="0xcc0000" title="Memphis Red"></div>
+    </div>
+
+    <div class="section-title">Preset Kamera</div>
+    <div class="btn-group">
+      <button class="action-btn" id="cam-front">Depan</button>
+      <button class="action-btn" id="cam-side">Samping</button>
+      <button class="action-btn" id="cam-top">Atas</button>
+      <button class="action-btn" id="cam-reset">Default</button>
+    </div>
+
+    <div class="section-title">Fitur Kontrol</div>
+    <div class="btn-group">
+      <button class="action-btn" id="toggle-rotate">Putar Otomatis</button>
+      <button class="action-btn" id="toggle-lights">Lampu Depan</button>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
